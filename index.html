@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promessômetro Premium João Campos - Jamildo.com</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* CSS: Visual Premium, Dinâmico e Alta Legibilidade */
+        :root {
+            --azul-jamildo: #024796;
+            --laranja-jamildo: #f83d03;
+            --branco: #ffffff;
+            --cinza-fundo: #f0f2f5;
+            --cinza-texto: #4a4a4a;
+            --preto-titulo: #1a1a1a;
+            --sombra-card: 0 10px 30px rgba(0,0,0,0.08);
+            --transicao: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif; /* Fonte moderna e limpa */
+        }
+
+        body {
+            background-color: var(--cinza-fundo);
+            color: var(--cinza-texto);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Container Principal do Dashboard */
+        .dashboard-container {
+            width: 100%;
+            max-width: 1300px;
+            background-color: var(--branco);
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+            border-top: 8px solid var(--laranja-jamildo);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Cabeçalho Premium com Logo Branca */
+        .dashboard-header {
+            background-color: var(--azul-jamildo);
+            color: var(--branco);
+            padding: 30px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid var(--laranja-jamildo);
+        }
+
+        .header-title h1 {
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 32px;
+            letter-spacing: -1.5px;
+        }
+
+        .header-title p {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-top: 2px;
+        }
+
+        .logo-jamildo {
+            max-width: 180px;
+            height: auto;
+        }
+
+        /* Seção do Perfil: Mais "Respiro" e Estatísticas Clínicas */
+        .profile-stats-section {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 40px;
+            padding: 40px;
+            border-bottom: 1px solid #eee;
+            background-color: #fbfbfb;
+        }
+
+        .photo-frame {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 6px solid var(--laranja-jamildo);
+            box-shadow: var(--sombra-card);
+            transition: var(--transicao);
+            cursor: pointer;
+        }
+
+        .photo-frame:hover {
+            transform: scale(1.03) rotate(2deg);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .stat-card {
+            background-color: var(--branco);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid #eee;
+            transition: var(--transicao);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .stat-card.destaque {
+            border-left: 5px solid var(--laranja-jamildo);
+            box-shadow: 0 5px 15px rgba(248, 61, 3, 0.05);
+        }
+
+        .stat-card:not(.destaque) {
+            border-left: 5px solid var(--azul-jamildo);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--sombra-card);
+        }
+
+        .stat-emoji {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .stat-number {
+            font-size: 50px;
+            font-weight: 800;
+            color: var(--azul-jamildo);
+            letter-spacing: -2px;
+        }
+
+        .stat-card.destaque .stat-number {
+            color: var(--laranja-jamildo);
+        }
+
+        .stat-label {
+            font-size: 13px;
+            text-transform: uppercase;
+            color: #666;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        /* Seção de Filtros: Mais Elegante e Funcional */
+        .filters-section {
+            padding: 25px 40px;
+            background-color: var(--branco);
+            border-bottom: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .search-container {
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 25px 15px 55px;
+            border: 2px solid #e1e1e1;
+            border-radius: 30px;
+            font-size: 15px;
+            transition: var(--transicao);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--laranja-jamildo);
+            box-shadow: 0 0 0 4px rgba(248, 61, 3, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 22px;
+            top: 18px;
+            font-size: 18px;
+            color: #999;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-title {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #888;
+            margin-right: 10px;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 1px solid #e1e1e1;
+            background-color: #f9f9f9;
+            color: var(--azul-jamildo);
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transicao);
+        }
+
+        .filter-btn:hover {
+            background-color: #eee;
+        }
+
+        .filter-btn.active {
+            background-color: var(--laranja-jamildo);
+            color: var(--branco);
+            border-color: var(--laranja-jamildo);
+            box-shadow: 0 4px 10px rgba(248, 61, 3, 0.2);
+        }
+
+        /* Grid Dinâmico de Cards Expandíveis */
+        .promises-grid {
+            padding: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .promise-card {
+            background-color: var(--branco);
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 25px;
+            transition: var(--transicao);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .promise-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--sombra-card);
+            border-color: #e0e0e0;
+        }
+
+        /* Meta dados: Data e Tema */
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            color: #999;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .card-theme {
+            color: var(--azul-jamildo);
+        }
+
+        /* Conteúdo Principal do Card */
+        .card-main {
+            display: flex;
+            align-items: start;
+            gap: 18px;
+        }
+
+        .card-emoji {
+            font-size: 32px;
+            margin-top: 3px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--preto-titulo);
+            line-height: 1.3;
+        }
+
+        /* Tags de Palavras-Chave Visíveis */
+        .card-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 5px;
+        }
+
+        .tag {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            background-color: #eee;
+            color: #666;
+            padding: 5px 10px;
+            border-radius: 15px;
+            transition: var(--transicao);
+        }
+
+        .promise-card:hover .tag {
+            background-color: var(--azul-jamildo);
+            color: var(--branco);
+        }
+
+        /* Detalhes Expandíveis: Escondidos por Padrão */
+        .card-details {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            display: none; /* Escondido */
+            animation: slideDown 0.3s ease-out;
+        }
+
+        /* Classe que ativa a expansão (via JS) */
+        .promise-card.expanded .card-details {
+            display: block;
+        }
+
+        /* Ícone indicador de expansão */
+        .expand-icon {
+            position: absolute;
+            right: 20px;
+            bottom: 15px;
+            font-size: 12px;
+            color: #bbb;
+            transition: var(--transicao);
+        }
+
+        .promise-card.expanded .expand-icon {
+            transform: rotate(180deg);
+            color: var(--laranja-jamildo);
+        }
+
+        /* Animações e Efeitos */
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .promise-card { animation: fadeIn 0.5s ease-out; }
+
+        /* Efeito visual ao filtrar */
+        .promises-grid.filtering .promise-card {
+            opacity: 0.1;
+            transform: scale(0.95);
+        }
+
+        /* Responsividade Premium */
+        @media (max-width: 900px) {
+            .profile-stats-section {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 30px;
+            }
+            .photo-frame { margin: 0 auto; width: 180px; height: 180px; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .promises-grid { grid-template-columns: 1fr; padding: 20px; }
+        }
+
+        @media (max-width: 600px) {
+            .dashboard-header { flex-direction: column; gap: 15px; text-align: center; }
+            .header-title h1 { font-size: 26px; }
+            .logo-jamildo { max-width: 150px; }
+            .filters-section { padding: 20px; }
+            .filter-group { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="dashboard-container">
+    
+    <!-- CABEÇALHO PREMIUM COM LOGO BRANCA -->
+    <header class="dashboard-header">
+        <div class="header-title">
+            <h1>Promessômetro 2026</h1>
+            <p>Dashboard de Monitoramento Dinâmico – João Campos</p>
+        </div>
+        <!-- LOGO BRANCA DO JAMILDO.COM -->
+        <img src="https://jamildo.com/media/uploads/logo-jamildo-branco.png" alt="Jamildo.com" class="logo-jamildo">
+    </header>
+
+    <!-- ÁREA DO PERFIL E ESTATÍSTICAS CLÍNICAS -->
+    <section class="profile-stats-section">
+        <!-- FOTO DO JOÃO: SUBSTITUA O LINK ABAIXO PELO LINK REAL -->
+        <div class="photo-frame" title="Clique para detalhes">
+            <img src="joao-campos.jpg" alt="João Campos" id="imgJoao">
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card destaque">
+                <div class="stat-emoji">📢</div>
+                <div class="stat-number">34</div>
+                <div class="stat-label">Anúncios Mapeados</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-emoji">💡</div>
+                <div class="stat-number">12</div>
+                <div class="stat-label">Eixos Estratégicos</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-emoji">🗳️</div>
+                <div class="stat-number">2026</div>
+                <div class="stat-label">Ano Eleitoral</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE FILTROS: MÊS E TEMA -->
+    <section class="filters-section">
+        <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" class="search-input" placeholder="Pesquisar por tema, tag ou palavra-chave nas propostas...">
+        </div>
+        
+        <!-- FILTRO POR MÊS -->
+        <div class="filter-group" id="monthFilters">
+            <span class="filter-title">Mês:</span>
+            <button class="filter-btn active" data-filter="todos" data-type="month">Todos</button>
+            <button class="filter-btn" data-filter="Maio" data-type="month">Mai</button>
+            <button class="filter-btn" data-filter="Junho" data-type="month">Jun</button>
+            <button class="filter-btn" data-filter="Julho" data-type="month">Jul</button>
+        </div>
+
+        <!-- FILTRO POR TEMA: CORRIGIDO PARA INFRAESTRUTURA -->
+        <div class="filter-group" id="themeFilters">
+            <span class="filter-title">Tema:</span>
+            <button class="filter-btn active" data-filter="todos" data-type="theme">Todos</button>
+            <button class="filter-btn" data-filter="Infraestrutura" data-type="theme">Infraestrutura</button>
+            <button class="filter-btn" data-filter="Saúde" data-type="theme">Saúde</button>
+            <button class="filter-btn" data-filter="Educação" data-type="theme">Educação</button>
+            <button class="filter-btn" data-filter="Economia" data-type="theme">Economia</button>
+        </div>
+    </section>
+
+    <!-- GRID DINÂMICO DE CARDS -->
+    <main class="promises-grid" id="promisesGrid">
+        <!-- O JavaScript preencherá os cards expandíveis aqui -->
+    </main>
+
+</div>
+
+<script>
+    // JAVASCRIPT: Banco de Dados com Mais Detalhes e Tags Visíveis
+
+    // 1. DADOS COMPLETOS E DETALHADOS
+    const promisesData = [
+        // MAIO
+        { data: "23-24 Mai", mes: "Maio", tema: "Economia", emoji: "💰", titulo: "Redução de impostos no Sertão",tags: ["Impostos", "Sertão", "Crédito", "Caprinovinocultura"], resumo: "Redução de tributos para caprinovinocultura no Sertão.", detalhes: "O foco é baixar o imposto sobre a exportação de ovinos e caprinos vivos para recuperar a competitividade de Pernambuco em relação aos estados vizinhos e fortalecer os produtores locais." },
+        
+        { data: "30 Mai", mes: "Maio", tema: "Infraestrutura", emoji: "🚂", titulo: "Estadualização da Transnordestina", tags: ["Ferrovia", "Transnordestina", "Transporte", "Governo Federal"], resumo: "Proposta para assumir trecho da Transnordestina em Pernambuco.", detalhes: "Propor ao Governo Federal a transferência da responsabilidade de construção e concessão do trecho pernambucano da ferrovia Transnordestina para o Governo do Estado, garantindo a conclusão das obras." },
+        
+        { data: "30 Mai", mes: "Maio", tema: "Saúde", emoji: "🚑", titulo: "Saúde no Sertão Central (Salgueiro)", tags: ["Hospital", "Gestantes", "Alto Risco", "Salgueiro", "Sertão"], resumo: "Abertura de unidade especializada para gestantes de alto risco.", detalhes: "Reverter a suspensão dos atendimentos a gestantes de alto risco no Hospital Regional Inácio de Sá, em Salgueiro, através da abertura de uma unidade especializada para esse atendimento." },
+        
+        { data: "30 Mai", mes: "Maio", tema: "Hídrico", emoji: "💧", titulo: "Abastecimento de água rural", tags: ["Água", "Rural", "São Francisco", "Transposição"], resumo: "Obras para interligar comunidades rurais à transposição do Rio São Francisco.", detalhes: "Realizar obras complementares para interligar as comunidades rurais localizadas próximas aos eixos de transposição do Rio São Francisco, garantindo acesso à água tratada." },
+
+        // JUNHO
+        { data: "03 Jun", mes: "Junho", tema: "Educação", emoji: "💻", titulo: "Embarque Digital Pernambuco", tags: ["Tecnologia", "Emprego", "Educação", "Vagas Gratuitas"], resumo: "Criar versão estadual do programa de formação em tecnologia.", detalhes: "Proposta prevê a oferta de 10 mil vagas gratuitas a nível estadual para estudantes de escolas públicas ao longo de quatro anos, visando a formação superior em tecnologia e inserção no mercado de trabalho." },
+        
+        { data: "03 Jun", mes: "Junho", tema: "Tecnologia", emoji: "💡", titulo: "Polos de tecnologia no Interior", tags: ["Tecnologia", "Multinacionais", "Interior", "Polo Operacional"], resumo: "Atrair multinacionais tecnológicas para o interior.", detalhes: "Criar incentivos e infraestrutura para atrair multinacionais do setor tecnológico para implantar centros operacionais no interior do estado, descentralizando o desenvolvimento." },
+        
+        { data: "04 Jun", mes: "Junho", tema: "Economia", emoji: "📊", titulo: "Planejamento econômico com dados", tags: ["Gestão", "Senai", "Dados", "Setor Produtivo"], resumo: "Gestão baseada no Observatório da Indústria do Senai.", detalhes: "Construir uma gestão estadual baseada em dados qualificados sobre os setores produtivos, utilizando o modelo do Observatório da Indústria do Senai para guiar as políticas públicas." },
+        
+        { data: "04 Jun", mes: "Junho", tema: "Infraestrutura", emoji: "🛣️", titulo: "Duplicação da PE-60 (Mata Sul)", tags: ["Estrada", "Duplicação", "Mata Sul", "Litoral"], resumo: "Duplicação da rodovia PE-60 no Litoral Sul.", detalhes: "Realizar a duplicação da rodovia PE-60 em toda a sua extensão no Litoral Sul de Pernambuco, melhorando o escoamento da produção e o fluxo turístico." },
+        
+        { data: "05 Jun", mes: "Junho", tema: "Infraestrutura", emoji: "🚧", titulo: "Pavimentação da PE-244 (Agreste)", tags: ["Estrada", "Pavimentação", "Agreste", "Pedra", "Águas Belas"], resumo: "Retomada e execução da pavimentação da PE-244.", detalhes: "Retomar e executar as obras de pavimentação da rodovia PE-244, no trecho que atende o município da Pedra em direção a Águas Belas, conectando regiões do Agreste." },
+        
+        { data: "05 Jun", mes: "Junho", tema: "Agricultura", emoji: "🌱", titulo: "Reformulação do IPA", tags: ["Agricultura", "IPA", "Pequeno Produtor", "Crédito"], resumo: "Reestruturação técnica do IPA focado na assistência.", detalhes: "Promover uma reestruturação do Instituto Agronômico de Pernambuco (IPA). O plano prevê uma gestão técnica focada na assistência aos pequenos produtores e na facilitação do acesso a crédito." },
+        
+        { data: "06 Jun", mes: "Junho", theme: "Saúde", emoji: "🧩", title: "Rede neurodivergente no Interior", tags: ["Neurodivergente", "Autismo", "Crianças", "Interior", "Atendimento"], resumo: "Criar rede estadual de atendimento para crianças neurodivergentes.", detalhes: "As unidades vão oferecer serviços de fonoaudiologia, fisioterapia, terapia ocupacional, psiquiatria e psicologia infantil, focando no interior do estado." },
+        
+        { data: "06 Jun", mes: "Junho", tema: "Saúde", emoji: "🚑", titulo: "Reabrir UPA de Bom Conselho", tags: ["UPA", "Saúde", "Reabertura", "Bom Conselho"], resumo: "Reabrir a UPA do município de Bom Conselho.", detalhes: "Garantir a reabertura e o funcionamento pleno da Unidade de Pronto Atendimento (UPA) do município de Bom Conselho, expandindo o acesso à saúde na região." },
+        
+        { data: "06 Jun", mes: "Junho", tema: "Educação", emoji: "🏫", titulo: "Polo tecnológico em Angelim", tags: ["Tecnologia", "Educação", "Embarque Digital", "Angelim", "Interior"], resumo: "Lançar o Embarque Digital Pernambuco prioritariamente em Angelim.", detalhes: "Tornar Angelim a primeira cidade polo do programa no interior, focando na formação tecnológica e descentralização." },
+        
+        { data: "06 Jun", mes: "Junho", tema: "Agricultura", emoji: "🐟", titulo: "Apoio à piscicultura (Sertão)", tags: ["Piscicultura", "Tilápia", "Sertão", "Crédito", "Itaparica"], resumo: "Ampliar crédito e fomento para produção de tilápia.", detalhes: "Ampliar o apoio governamental, o fomento e o crédito para a produção de tilápia no Sertão de Itaparica, fortalecendo a economia local." },
+        
+        { data: "06 Jun", mes: "Junho", tema: "Saúde", emoji: "🏥", titulo: "Hospital Regional Petrolândia", tags: ["Hospital", "Regional", "UTI", "Petrolândia", "Sertão"], resumo: "Transformar hospital municipal em estadual e regional.", detalhes: "A estrutura receberá ampliação com a instalação de UTI, novos blocos cirúrgicos e mais especialidades médicas custeadas pelo Estado em Petrolândia." },
+        
+        { data: "07 Jun", mes: "Junho", tema: "Economia", emoji: "🤝", titulo: "Desburocratização no Sertão", tags: ["Economia", "Crédito", "Desburocratização", "Petrolândia"], resumo: "Medidas de desburocratização e crédito para Cooperativa CAAP.", detalhes: "Promover medidas de desburocratização e ampliar o acesso ao crédito para os produtores da Cooperativa Agroaquícola de Petrolândia (CAAP)." },
+        
+        { data: "08 Jun", mes: "Junho", tema: "Infraestrutura", emoji: "🥛", titulo: "Logística leiteira em Itaíba", tags: ["Estrada", "Leite", "Pavimentação", "Itaíba"], resumo: "Pavimentar estrada para escoamento de leite.", detalhes: "Pavimentar a estrada que interliga a sede do município de Itaíba ao povoado de Trapiche para otimizar o escoamento da produção de leite local." },
+        
+        { data: "17 Jun", mes: "Junho", tema: "Infraestrutura", emoji: "🛣️", titulo: "Duplicação da BR-232 (Arcoverde)", tags: ["Estrada", "BR-232", "Duplicação", "Arcoverde", "Sertão"], resumo: "Duplicação da BR-232 estendida até Arcoverde.", detalhes: "Realizar a duplicação da rodovia BR-232 estendendo o trecho de obras até o município de Arcoverde, facilitando a conexão com o Sertão." },
+        
+        { data: "19 Jun", mes: "Junho", tema: "Cultura", emoji: "🎭", titulo: "Jogos da Cultura de Pernambuco", tags: ["Cultura", "Escolas", "Talento", "Educação"], resumo: "Criar Jogos Escolares da Cultura nas escolas públicas.", detalhes: "O projeto terá etapas regionais nas escolas públicas para revelar e valorizar talentos jovens na música, na dança e em outras manifestações artísticas." },
+        
+        { data: "19 Jun", mes: "Junho", tema: "Cultura", emoji: "🪗", titulo: "Fomento cultural em Exu (Luiz Gonzaga)", tags: ["Cultura", "Exu", "Luiz Gonzaga", "Música", "Baião"], resumo: "Apoiar preservação da memória de Luiz Gonzaga e ensino de sanfona.", detalhes: "Apoiar a preservação da memória de Luiz Gonzaga e financiar o ensino do forró, do baião e de instrumentos tradicionais, como a sanfona, com recursos e melhorias de infraestrutura em Exu." },
+        
+        { data: "19 Jun", mes: "Junho", tema: "Educação", emoji: "🔧", titulo: "Escola Técnica de Exu", tags: ["Educação", "Escola Técnica", "Obra", "Conclusão", "Exu"], resumo: "Concluir obras da Escola Técnica Estadual de Exu.", detalhes: "Garantir a conclusão das obras e o funcionamento pleno da Escola Técnica Estadual no município de Exu, expandindo o ensino profissionalizante." },
+        
+        { data: "19 Jun", mes: "Junho", tema: "Infraestrutura", emoji: "🚧", titulo: "Duplicação da PE em Lajedo", tags: ["Estrada", "Duplicação", "Lajedo", "Agreste"], resumo: "Duplicação da rodovia PE em Lajedo contempla integralmente trecho Barra do Poço.", detalhes: "Realizar a duplicação da rodovia PE em Lajedo contemplando integralmente o trecho Barra do Poço." },
+        
+        { data: "25 Jun", mes: "Junho", tema: "Economia", emoji: "🏭", titulo: "Desenvolvimento da Mata Norte", tags: ["Economia", "Mata Norte", "Indústria", "BR-408", "PE-90"], resumo: "Novo ciclo de desenvolvimento focado na interiorização de indústrias.", detalhes: "Implementar um novo ciclo de desenvolvimento econômico focado na interiorização de indústrias. Apoia extensão da duplicação da BR-408 e propõe duplicação da PE-90." },
+        
+        { data: "25 Jun", mes: "Junho", tema: "Infraestrutura", emoji: "👶", titulo: "Plano de Metas Geral (Creches)", tags: ["Infraestrutura", "Educação", "Creches públicas", "Ensino Técnico"], resumo: "Construir creches públicas, expandir ensino técnico estadual.", detalhes: "Parte do plano geral prevê a construção de creches públicas em todo o estado e a expansão do ensino técnico estadual, além de atração de indústrias." },
+        
+        { data: "28 Jun", mes: "Junho", tema: "Social", emoji: "🏍️", titulo: "Programa Moto Rural Legal", tags: ["Social", "Moto", "Rural", "IPVA", "CNH", "Capacete"], resumo: "Isentar IPVA de motociclistas rurais e custear CNH.", detalhes: "Isentar motociclistas da zona rural de IPVA. Estado custeia integralmente CNH, curso de formação e fornece capacetes gratuitamente." },
+        { data: "28 Jun", mes: "Junho", tema: "Economia", emoji: "🚢", titulo: "Expansão de Suape na Mata Sul", tags: ["Economia", "Suape", "Mata Sul", "Indústria", "Fábricas"], resumo: "Ampliar Suape na Mata Sul e assumir distritos industriais municipais.", detalhes: "Lei para ampliar território de influência de Suape na Mata Sul. Gestão portuária assumirá administração compartilhada de distritos industriais municipais para atrair fábricas." },
+        
+        { data: "28 Jun", mes: "Junho", tema: "Infraestrutura", emoji: "🚂", titulo: "Duas frentes na Transnordestina", tags: ["Ferrovia", "Transnordestina", "Suape", "Sertão", "Obras"], resumo: "Nova frente de obras a partir de Suape simultânea ao Sertão.", detalhes: "Articular nova frente de obras da Transnordestina Porto de Suape em direção ao Sertão simultânea aos trabalhos interior." },
+        
+        // JULHO
+        { data: "04 Jul", mes: "Julho", tema: "Infraestrutura", emoji: "🔄", titulo: "Trecho Norte do Arco Metropolitano", tags: ["Arco Metropolitano", "Mobilidade", "Logística", "RMR", "Goiana"], resumo: "Construir o trecho norte do Arco Metropolitano.", detalhes: "Solucionar gargalo de mobilidade e logística da RMR desafogar BR-101 e garantir fluidez polo Goiana e Paraíba." },
+        
+        { data: "06 Jul", mes: "Julho", tema: "Segurança", emoji: "♀️", titulo: "Delegacias da Mulher 24h", tags: ["Segurança", "Mulher", "Violência", "24h", "Pernambuco"], resumo: "Determinar abertura funcionamento 24h de todas Delegacias da Mulher Pernambuco.", detalhes: "Garantir atendimento ininterrupto 24 horas por dia durante toda a semana em todas as Delegacias da Mulher do estado." },
+        
+        { data: "06 Jul", mes: "Julho", tema: "Segurança", emoji: "⛓️", titulo: "Monitoramento de agressores", tags: ["Segurança", "Violência", "Agressores", "Tornozeleiras"], resumo: "Adquirir 20 mil tornozeleiras eletrônicas para fiscalizar medidas protetivas.", detalhes: "Monitorar homens que respondem a medidas protetivas de urgência com 20 mil tornozeleiras eletrônicas." },
+        
+        { data: "06 Jul", mes: "Julho", tema: "Educação", emoji: "👶", titulo: "Rede creches estaduais Paulista", tags: ["Educação", "Creches públicas", "Paulista", "Construção"], resumo: "Iniciar construção creches públicas Paulista demais municípios.", detalhes: "Construir creches públicas estaduais Paulista e demais municípios Pernambucanos." },
+        
+        { data: "06 Jul", mes: "Julho", tema: "Social", emoji: "👩‍💼", titulo: "Autonomia feminina (Escrituras)", tags: ["Social", "Mulher", "Autonomia", "Crédito", "Escrituras", "Emprego"], resumo: "Priorizar mulheres emissão escrituras e crédito fundiário.", detalhes: "Priorizar mulheres emissão escrituras regularização fundiária além acesso crédito formação profissional." },
+        
+        { data: "08 Jul", mes: "Julho", tema: "Hídrico", emoji: "💧", titulo: "Tarifa Social Água Isenção total", tags: ["Água", "Compesa", "Tarifa Social", "Isenção", "Baixa Renda"], resumo: "Isentar totalmente tarifa básica esgoto famílias baixa renda Compesa.", detalhes: "Isentar totalmente tarifa básica R$ 27,50 esgoto famílias baixa renda Tarifa Social rodízio oficial Compesa." },
+        
+        { data: "08 Jul", mes: "Julho", tema: "Hídrico", emoji: "🚫", titulo: "Fim cobrança mínima racionamento", tags: ["Água", "Racionamento", "Taxa mínima", "Compesa", "Consumidor"], resumo: "Consumidores enfrentam racionamento pagam volume real consumido, eliminando taxa mínima.", detalhes: "Consumidores enfrentam racionamento pagam exclusivamente volume real consumido, eliminando cobrança taxa mínima até 10m³." },
+        
+        { data: "08 Jul", mes: "Julho", tema: "Hídrico", emoji: "🏗️", titulo: "Grandes obras hídricas interior", tags: ["Água", "Obras", "Adutora do Agreste", "Sertão", "Interior"], resumo: "Retomar acelerar obras: 2ª etapa Adutora do Agreste Adutora do Oeste Negreiros.", detalhes: "Retomar acelerar obras estruturadoras abastecimento interior estado: Adutora Agreste (2ª etapa) Adutora Oeste Negreiros." },
+        
+        { data: "09 Jul", mes: "Julho", tema: "Infraestrutura", emoji: "🚔", titulo: "Duplicação PE-28 Segurança Cabo", tags: ["Estrada", "Duplicação", "Segurança", "Cabo", "BOPE"], resumo: "Duplicar PE-28 Litoral Sul implantar batalhão BOPE Cabo.", detalhes: "Duplicar PE-28 mobilidade logística Litoral Sul implantar batalhão BOPE Cabo Santo Agostinho." },
+        
+        { data: "10 Jul", mes: "Julho", tema: "Mobilidade", emoji: "🏢", titulo: "Centro Gestão Metropolitana Permanente", tags: ["Mobilidade", "Gestão", "RMR", "Recife", "Prefeituras"], resumo: "Criar órgão permanente coordenar ações conjuntas Governo Estado prefeituras RMR.", detalhes: "Criar órgão gestão permanente coordenar ações conjuntas Governo Estado prefeituras RMR." },
+        
+        { data: "11 Jul", mes: "Julho", tema: "Saúde", emoji: "🏥", titulo: "Hospital Regional São Francisco", tags: ["Hospital", "Regional", "Sertão", "São Francisco", "Saúde"], resumo: "Criar uma unidade hospitalar regional para atender a região do São Francisco.", detalhes: "Anúncio realizado por João Campos de criação Hospital Regional São Francisco atender região." },
+        
+        { data: "11 Jul", mes: "Julho", tema: "Tecnologia", emoji: "🚜", titulo: "Vale AgroTech São Francisco", tags: ["Tecnologia", "Inovação", "Agricultura", "São Francisco"], resumo: "Implementar polo inovação integrando tecnologia pesquisa produtores semiárido.", detalhes: "Polo inovação integrando tecnologia pesquisa universidades produtores fortalecer agricultura irrigada Semiárido." },
+        
+        { data: "12 Jul", mes: "Julho", tema: "Mobilidade", emoji: "🛺", titulo: "Regularização Toyoteiros Toyoteiro", tags: ["Mobilidade", "Regularização", "Toyoteiros", "Transporte complementar"], resumo: "Plano regularização Toyoteiros toyoteiro complementar garante segurança jurídica intermunicipal.", detalhes: "Construir diálogo categoria plano regularização Toyoteiros toyoteiro complementar garante segurança jurídica prestação serviço transporte intermunicipal." },
+        
+        { data: "13 Jul", mes: "Julho", tema: "Mobilidade", emoji: "🏍️", titulo: "IPVA Zero para Motos Motocicletas", tags: ["Motos", "IPVA", "Trabalhador", "Isenção"], resumo: "Isentar IPVA motocicletas até 180 cilindradas beneficiando trabalhadores.", detalhes: "Isentar IPVA motocicletas motocicletas até 180 cilindradas trabalhadores utilizando veículo subsistência." }
+    ];
+
+    const grid = document.getElementById('promisesGrid');
+    const searchInput = document.getElementById('searchInput');
+    const filters = document.querySelectorAll('.filter-btn');
+
+    // FUNÇÃO: RENDERIZAR OS CARDS PREMIUM E EXPANDÍVEIS
+    function renderPromises(data) {
+        grid.innerHTML = ''; // Limpa o grid atual
+
+        if (data.length === 0) {
+            grid.innerHTML = '<p style="text-align:center; padding: 60px; grid-column: 1/-1; color: #666;">Nenhuma promessa encontrada com os critérios selecionados.</p>';
+            return;
+        }
+
+        data.forEach(promise => {
+            const card = document.createElement('div');
+            card.className = 'promise-card';
+            
+            // Cria as Tags Visíveis
+            let tagsHtml = promise.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+
+            card.innerHTML = `
+                <div class="card-meta">
+                    <span class="card-date">${promise.data}</span>
+                    <span class="card-theme">${promise.tema}</span>
+                </div>
+                <div class="card-main">
+                    <div class="card-emoji">${promise.emoji}</div>
+                    <div class="card-title-area">
+                        <h3 class="card-title">${promise.titulo}</h3>
+                        <p style="font-size: 13px; color: #777; margin-top: 5px;">${promise.resumo}</p>
+                        <div class="card-tags">${tagsHtml}</div>
+                    </div>
+                </div>
+                <!-- Detalhes Expandíveis -->
+                <div class="card-details">
+                    <strong>Detalhes Completos:</strong><br>
+                    ${promise.detalhes}
+                </div>
+                <!-- Ícone indicador de expansão -->
+                <span class="expand-icon">▼</span>
+            `;
+
+            // Evento de Clique para Expandir o Card
+            card.addEventListener('click', () => {
+                // Fecha qualquer outro card expandido
+                const currentlyExpanded = document.querySelector('.promise-card.expanded');
+                if (currentlyExpanded && currentlyExpanded !== card) {
+                    currentlyExpanded.classList.remove('expanded');
+                }
+                // Ativa/Desativa o card clicado
+                card.classList.toggle('expanded');
+            });
+
+            grid.appendChild(card);
+        });
+    }
+
+    // FUNÇÃO: FILTRAGEM COMBINADA AVANÇADA (MÊS + TEMA + PESQUISA)
+    function filterPromises() {
+        const searchText = searchInput.value.toLowerCase().trim();
+        const activeMonth = document.querySelector('.filter-btn.active[data-type="month"]').getAttribute('data-filter');
+        const activeTheme = document.querySelector('.filter-btn.active[data-type="theme"]').getAttribute('data-filter');
+
+        const filtered = promisesData.filter(p => {
+            // Pesquisa Avançada: Título, Resumo, Detalhes e Tags
+            const matchesSearch = searchText === '' || 
+                                 p.titulo.toLowerCase().includes(searchText) || 
+                                 p.resumo.toLowerCase().includes(searchText) || 
+                                 p.detalhes.toLowerCase().includes(searchText) || 
+                                 p.tags.some(tag => tag.toLowerCase().includes(searchText));
+            
+            const matchesMonth = activeMonth === 'todos' || p.mes === activeMonth;
+            const matchesTheme = activeTheme === 'todos' || p.tema === activeTheme;
+
+            return matchesSearch && matchesMonth && matchesTheme;
+        });
+
+        // Efeito de transição suave ao filtrar
+        grid.classList.add('filtering');
+
+        setTimeout(() => {
+            renderPromises(filtered);
+            grid.classList.remove('filtering');
+        }, 150);
+    }
+
+    // EVENTOS: PESQUISA E CLIQUE EM FILTROS
+    searchInput.addEventListener('input', filterPromises);
+
+    filters.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const type = btn.getAttribute('data-type');
+            // Remove active apenas do grupo correto (Mês ou Tema)
+            document.querySelector(`.filter-btn.active[data-type="${type}"]`).classList.remove('active');
+            btn.classList.add('active');
+            filterPromises();
+        });
+    });
+
+    // INICIALIZAÇÃO
+    renderPromises(promisesData); // Carrega tudo ao abrir
+
+</script>
+
+</body>
+</html>
