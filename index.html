@@ -22,7 +22,7 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Inter', sans-serif; /* Fonte moderna e limpa */
+            font-family: 'Inter', sans-serif;
         }
 
         body {
@@ -75,7 +75,7 @@
             height: auto;
         }
 
-        /* Seção do Perfil: Mais "Respiro" e Estatísticas Clínicas */
+        /* Seção do Perfil e Estatísticas */
         .profile-stats-section {
             display: grid;
             grid-template-columns: 220px 1fr;
@@ -108,7 +108,7 @@
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr); /* Ajustado para 2 colunas */
             gap: 25px;
         }
 
@@ -162,7 +162,7 @@
             margin-top: 10px;
         }
 
-        /* Seção de Filtros: Mais Elegante e Funcional */
+        /* Seção de Filtros */
         .filters-section {
             padding: 25px 40px;
             background-color: var(--branco);
@@ -238,7 +238,7 @@
             box-shadow: 0 4px 10px rgba(248, 61, 3, 0.2);
         }
 
-        /* Grid Dinâmico de Cards Expandíveis */
+        /* Grid Dinâmico */
         .promises-grid {
             padding: 40px;
             display: grid;
@@ -266,7 +266,6 @@
             border-color: #e0e0e0;
         }
 
-        /* Meta dados: Data e Tema */
         .card-meta {
             display: flex;
             justify-content: space-between;
@@ -281,7 +280,6 @@
             color: var(--azul-jamildo);
         }
 
-        /* Conteúdo Principal do Card */
         .card-main {
             display: flex;
             align-items: start;
@@ -300,7 +298,6 @@
             line-height: 1.3;
         }
 
-        /* Tags de Palavras-Chave Visíveis */
         .card-tags {
             display: flex;
             gap: 8px;
@@ -324,23 +321,20 @@
             color: var(--branco);
         }
 
-        /* Detalhes Expandíveis: Escondidos por Padrão */
         .card-details {
             font-size: 14px;
             line-height: 1.6;
             color: #555;
             padding-top: 15px;
             border-top: 1px solid #eee;
-            display: none; /* Escondido */
+            display: none;
             animation: slideDown 0.3s ease-out;
         }
 
-        /* Classe que ativa a expansão (via JS) */
         .promise-card.expanded .card-details {
             display: block;
         }
 
-        /* Ícone indicador de expansão */
         .expand-icon {
             position: absolute;
             right: 20px;
@@ -355,7 +349,6 @@
             color: var(--laranja-jamildo);
         }
 
-        /* Animações e Efeitos */
         @keyframes slideDown {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -368,13 +361,11 @@
 
         .promise-card { animation: fadeIn 0.5s ease-out; }
 
-        /* Efeito visual ao filtrar */
         .promises-grid.filtering .promise-card {
             opacity: 0.1;
             transform: scale(0.95);
         }
 
-        /* Responsividade Premium */
         @media (max-width: 900px) {
             .profile-stats-section {
                 grid-template-columns: 1fr;
@@ -405,13 +396,11 @@
             <h1>Promessômetro 2026</h1>
             <p>Dashboard de Monitoramento Dinâmico – João Campos</p>
         </div>
-        <!-- LOGO BRANCA DO JAMILDO.COM -->
-        <img src="https://jamildo.com/media/uploads/logo-jamildo-branco.png" alt="Jamildo.com" class="logo-jamildo">
+        <img src="https://jamildo.com/media/uploads/brancologojamildo_6xe6mA0.png" alt="Jamildo.com" class="logo-jamildo">
     </header>
 
-    <!-- ÁREA DO PERFIL E ESTATÍSTICAS CLÍNICAS -->
+    <!-- ÁREA DO PERFIL E ESTATÍSTICAS -->
     <section class="profile-stats-section">
-        <!-- FOTO DO JOÃO: SUBSTITUA O LINK ABAIXO PELO LINK REAL -->
         <div class="photo-frame" title="Clique para detalhes">
             <img src="joao-campos.jpg" alt="João Campos" id="imgJoao">
         </div>
@@ -423,11 +412,6 @@
                 <div class="stat-label">Anúncios Mapeados</div>
             </div>
             <div class="stat-card">
-                <div class="stat-emoji">💡</div>
-                <div class="stat-number">12</div>
-                <div class="stat-label">Eixos Estratégicos</div>
-            </div>
-            <div class="stat-card">
                 <div class="stat-emoji">🗳️</div>
                 <div class="stat-number">2026</div>
                 <div class="stat-label">Ano Eleitoral</div>
@@ -435,7 +419,7 @@
         </div>
     </section>
 
-    <!-- SEÇÃO DE FILTROS: MÊS E TEMA -->
+    <!-- SEÇÃO DE FILTROS -->
     <section class="filters-section">
         <div class="search-container">
             <span class="search-icon">🔍</span>
@@ -451,31 +435,22 @@
             <button class="filter-btn" data-filter="Julho" data-type="month">Jul</button>
         </div>
 
-        <!-- FILTRO POR TEMA: CORRIGIDO PARA INFRAESTRUTURA -->
+        <!-- FILTRO POR TEMA (GERADO DINAMICAMENTE VIA JS) -->
         <div class="filter-group" id="themeFilters">
             <span class="filter-title">Tema:</span>
             <button class="filter-btn active" data-filter="todos" data-type="theme">Todos</button>
-            <button class="filter-btn" data-filter="Infraestrutura" data-type="theme">Infraestrutura</button>
-            <button class="filter-btn" data-filter="Saúde" data-type="theme">Saúde</button>
-            <button class="filter-btn" data-filter="Educação" data-type="theme">Educação</button>
-            <button class="filter-btn" data-filter="Economia" data-type="theme">Economia</button>
         </div>
     </section>
 
     <!-- GRID DINÂMICO DE CARDS -->
-    <main class="promises-grid" id="promisesGrid">
-        <!-- O JavaScript preencherá os cards expandíveis aqui -->
-    </main>
+    <main class="promises-grid" id="promisesGrid"></main>
 
 </div>
 
 <script>
-    // JAVASCRIPT: Banco de Dados com Mais Detalhes e Tags Visíveis
-
-    // 1. DADOS COMPLETOS E DETALHADOS
     const promisesData = [
         // MAIO
-        { data: "23-24 Mai", mes: "Maio", tema: "Economia", emoji: "💰", titulo: "Redução de impostos no Sertão",tags: ["Impostos", "Sertão", "Crédito", "Caprinovinocultura"], resumo: "Redução de tributos para caprinovinocultura no Sertão.", detalhes: "O foco é baixar o imposto sobre a exportação de ovinos e caprinos vivos para recuperar a competitividade de Pernambuco em relação aos estados vizinhos e fortalecer os produtores locais." },
+        { data: "23-24 Mai", mes: "Maio", tema: "Economia", emoji: "💰", titulo: "Redução de impostos no Sertão", tags: ["Impostos", "Sertão", "Crédito", "Caprinovinocultura"], resumo: "Redução de tributos para caprinovinocultura no Sertão.", detalhes: "O foco é baixar o imposto sobre a exportação de ovinos e caprinos vivos para recuperar a competitividade de Pernambuco em relação aos estados vizinhos e fortalecer os produtores locais." },
         
         { data: "30 Mai", mes: "Maio", tema: "Infraestrutura", emoji: "🚂", titulo: "Estadualização da Transnordestina", tags: ["Ferrovia", "Transnordestina", "Transporte", "Governo Federal"], resumo: "Proposta para assumir trecho da Transnordestina em Pernambuco.", detalhes: "Propor ao Governo Federal a transferência da responsabilidade de construção e concessão do trecho pernambucano da ferrovia Transnordestina para o Governo do Estado, garantindo a conclusão das obras." },
         
@@ -557,8 +532,11 @@
         { data: "12 Jul", mes: "Julho", tema: "Mobilidade", emoji: "🛺", titulo: "Regularização Toyoteiros Toyoteiro", tags: ["Mobilidade", "Regularização", "Toyoteiros", "Transporte complementar"], resumo: "Plano regularização Toyoteiros toyoteiro complementar garante segurança jurídica intermunicipal.", detalhes: "Construir diálogo categoria plano regularização Toyoteiros toyoteiro complementar garante segurança jurídica prestação serviço transporte intermunicipal." },
         
         { data: "13 Jul", mes: "Julho", tema: "Mobilidade", emoji: "🏍️", titulo: "IPVA Zero para Motos Motocicletas", tags: ["Motos", "IPVA", "Trabalhador", "Isenção"], resumo: "Isentar IPVA motocicletas até 180 cilindradas beneficiando trabalhadores.", detalhes: "Isentar IPVA motocicletas motocicletas até 180 cilindradas trabalhadores utilizando veículo subsistência." },
-        { data: "15 Jul", mes: "Julho", tema: "Educação", emoji: "🛝", titulo: "Brinca Pernambuco", tags: ["Educação", "Crianças", "Lazer", "Recife"], resumo: "Criar Brinca Recife com atividades gratuitas para mais de 1 milhão de estudantes", detalhes: " promete criar colônia de férias gratuita para 1,6 milhão de estudantes, com programação gratuita de esporte, cultura, lazer e atividades educativas durante os meses de janeiro e julho. Inspirado no Brinca Recife" },
-        { data: "18 Jul", mes: "Julho", tema: "Cultura", emoji: "🎉", titulo: "Retomada de apoio ao FIG", tags: ["Cultura", "Turismo", "Festa", "Garanhuns"], resumo: "Retomar o apoio ao Festival de Inverno de Garanhuns (FIG) após rompimento entre estado e prefeitura no início da gestão Raquel ", detalhes: " " },
+        
+        { data: "15 Jul", mes: "Julho", tema: "Educação", emoji: "🛝", titulo: "Brinca Pernambuco", tags: ["Educação", "Crianças", "Lazer", "Pernambuco"], resumo: "Criar colônia de férias gratuita para mais de 1 milhão de estudantes.", detalhes: "Criação de colônia de férias gratuita para 1,6 milhão de estudantes com programação de esporte, cultura e lazer nos meses de janeiro e julho, modelo inspirado no Brinca Recife." },
+        
+        { data: "18 Jul", mes: "Julho", tema: "Cultura", emoji: "🎉", titulo: "Retomada de apoio ao FIG", tags: ["Cultura", "Turismo", "Festa", "Garanhuns"], resumo: "Retomar o apoio do Governo ao Festival de Inverno de Garanhuns.", detalhes: "Garantir o retorno do apoio institucional e financeiro do Estado ao Festival de Inverno de Garanhuns (FIG) após divergências operacionais em edições anteriores." },
+        
         { data: "19 Jul", mes: "Julho", tema: "Saúde", emoji: "👶", titulo: "Hospital da Criança do Agreste", tags: ["Hospital", "Criança", "Agreste", "Caruaru", "Saúde"], resumo: "Construção do Hospital da Criança do Agreste em Caruaru.", detalhes: "Anúncio do projeto do Hospital da Criança do Agreste durante a edição do Chega Junto no município de Caruaru." },
 
         { data: "19 Jul", mes: "Julho", tema: "Saúde", emoji: "🏥", titulo: "Reabertura do Hospital Jesus Nazareno", tags: ["Hospital", "Reabertura", "Caruaru", "Agreste", "Maternidade"], resumo: "Reabrir o Hospital Jesus Nazareno no Agreste.", detalhes: "Garantir a reabertura e reestruturação do Hospital Jesus Nazareno em Caruaru, unidade de saúde que havia sido fechada pelo Governo do Estado." },
@@ -567,16 +545,30 @@
 
         { data: "19 Jul", mes: "Julho", tema: "Infraestrutura", emoji: "🔄", titulo: "Anel Viário de Caruaru", tags: ["Anel Viário", "Caruaru", "Mobilidade", "Trânsito", "Agreste"], resumo: "Construção de anel viário nos arredores de Caruaru.", detalhes: "Executar obra de infraestrutura viária para criar um anel viário no entorno de Caruaru, retirando o tráfego pesado do centro urbano e melhorando a mobilidade regional." },
 
-        { data: "19 Jul", mes: "Julho", tema: "Economia", emoji: "👕", titulo: "Polo Agreste Global da Moda", tags: ["Moda", "Têxtil", "Agreste", "Qualificação", "Emprego"], resumo: "Criar o programa Polo Agreste Global da Moda.", detalhes: "Implementar o programa focado na qualificação profissional da mão de obra do setor têxtil e no fortalecimento da competitividade do Polo de Confecções do Agreste." },
+        { data: "19 Jul", mes: "Julho", tema: "Economia", emoji: "👕", titulo: "Polo Agreste Global da Moda", tags: ["Moda", "Têxtil", "Agreste", "Qualificação", "Emprego"], resumo: "Criar o programa Polo Agreste Global da Moda.", detalhes: "Implementar o programa focado na qualificação profissional da mão de obra do setor têxtil e no fortalecimento da competitividade do Polo de Confecções do Agreste." }
     ];
 
     const grid = document.getElementById('promisesGrid');
     const searchInput = document.getElementById('searchInput');
-    const filters = document.querySelectorAll('.filter-btn');
 
-    // FUNÇÃO: RENDERIZAR OS CARDS PREMIUM E EXPANDÍVEIS
+    // GERADOR DINÂMICO DOS BOTÕES DE TEMA
+    function setupThemeFilters() {
+        const themeFiltersContainer = document.getElementById('themeFilters');
+        // Extrai todos os temas únicos presentes na lista de promessas
+        const uniqueThemes = [...new Set(promisesData.map(p => p.tema))].sort();
+
+        uniqueThemes.forEach(tema => {
+            const btn = document.createElement('button');
+            btn.className = 'filter-btn';
+            btn.setAttribute('data-filter', tema);
+            btn.setAttribute('data-type', 'theme');
+            btn.textContent = tema;
+            themeFiltersContainer.appendChild(btn);
+        });
+    }
+
     function renderPromises(data) {
-        grid.innerHTML = ''; // Limpa o grid atual
+        grid.innerHTML = '';
 
         if (data.length === 0) {
             grid.innerHTML = '<p style="text-align:center; padding: 60px; grid-column: 1/-1; color: #666;">Nenhuma promessa encontrada com os critérios selecionados.</p>';
@@ -587,7 +579,6 @@
             const card = document.createElement('div');
             card.className = 'promise-card';
             
-            // Cria as Tags Visíveis
             let tagsHtml = promise.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
 
             card.innerHTML = `
@@ -603,23 +594,18 @@
                         <div class="card-tags">${tagsHtml}</div>
                     </div>
                 </div>
-                <!-- Detalhes Expandíveis -->
                 <div class="card-details">
                     <strong>Detalhes Completos:</strong><br>
                     ${promise.detalhes}
                 </div>
-                <!-- Ícone indicador de expansão -->
                 <span class="expand-icon">▼</span>
             `;
 
-            // Evento de Clique para Expandir o Card
             card.addEventListener('click', () => {
-                // Fecha qualquer outro card expandido
                 const currentlyExpanded = document.querySelector('.promise-card.expanded');
                 if (currentlyExpanded && currentlyExpanded !== card) {
                     currentlyExpanded.classList.remove('expanded');
                 }
-                // Ativa/Desativa o card clicado
                 card.classList.toggle('expanded');
             });
 
@@ -627,14 +613,12 @@
         });
     }
 
-    // FUNÇÃO: FILTRAGEM COMBINADA AVANÇADA (MÊS + TEMA + PESQUISA)
     function filterPromises() {
         const searchText = searchInput.value.toLowerCase().trim();
         const activeMonth = document.querySelector('.filter-btn.active[data-type="month"]').getAttribute('data-filter');
         const activeTheme = document.querySelector('.filter-btn.active[data-type="theme"]').getAttribute('data-filter');
 
         const filtered = promisesData.filter(p => {
-            // Pesquisa Avançada: Título, Resumo, Detalhes e Tags
             const matchesSearch = searchText === '' || 
                                  p.titulo.toLowerCase().includes(searchText) || 
                                  p.resumo.toLowerCase().includes(searchText) || 
@@ -647,31 +631,32 @@
             return matchesSearch && matchesMonth && matchesTheme;
         });
 
-        // Efeito de transição suave ao filtrar
         grid.classList.add('filtering');
 
         setTimeout(() => {
-            renderPromises([...filtered].reverse()); // USAR SINTAXE [...filtered]
+            renderPromises([...filtered].reverse());
             grid.classList.remove('filtering');
         }, 150);
     }
 
-    // EVENTOS: PESQUISA E CLIQUE EM FILTROS
-    searchInput.addEventListener('input', filterPromises);
+    // INICIALIZAÇÃO
+    setupThemeFilters(); // Cria os botões de tema com base nos dados
 
+    // Adiciona evento aos botões de filtro (Mês e Tema)
+    const filters = document.querySelectorAll('.filter-btn');
     filters.forEach(btn => {
         btn.addEventListener('click', () => {
             const type = btn.getAttribute('data-type');
-            // Remove active apenas do grupo correto (Mês ou Tema)
             document.querySelector(`.filter-btn.active[data-type="${type}"]`).classList.remove('active');
             btn.classList.add('active');
             filterPromises();
         });
     });
 
-    // INICIALIZAÇÃO
-    document.getElementById('totalPromessas').innerText = promisesData.length; // Atualiza a contagem automaticamente
-    renderPromises([...promisesData].reverse()); // Carrega tudo invertido
+    searchInput.addEventListener('input', filterPromises);
+
+    document.getElementById('totalPromessas').innerText = promisesData.length;
+    renderPromises([...promisesData].reverse());
 
 </script>
 
