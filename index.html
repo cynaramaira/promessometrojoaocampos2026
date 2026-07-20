@@ -419,7 +419,7 @@
         <div class="stats-grid">
             <div class="stat-card destaque">
                 <div class="stat-emoji">📢</div>
-                <div class="stat-number">34</div>
+                <div class="stat-number" id="totalPromessas">0</div>
                 <div class="stat-label">Anúncios Mapeados</div>
             </div>
             <div class="stat-card">
@@ -651,7 +651,7 @@
         grid.classList.add('filtering');
 
         setTimeout(() => {
-            renderPromises(filtered.reverse());
+            renderPromises([...filtered].reverse()); // USAR SINTAXE [...filtered]
             grid.classList.remove('filtering');
         }, 150);
     }
@@ -670,6 +670,7 @@
     });
 
     // INICIALIZAÇÃO
+    document.getElementById('totalPromessas').innerText = promisesData.length; // Atualiza a contagem automaticamente
     renderPromises([...promisesData].reverse()); // Carrega tudo invertido
 
 </script>
