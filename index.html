@@ -651,7 +651,7 @@
         grid.classList.add('filtering');
 
         setTimeout(() => {
-            renderPromises(filtered);
+            renderPromises(filtered.reverse());
             grid.classList.remove('filtering');
         }, 150);
     }
@@ -670,7 +670,7 @@
     });
 
     // INICIALIZAÇÃO
-    renderPromises(promisesData); // Carrega tudo ao abrir
+    renderPromises([...promisesData].reverse()); // Carrega tudo invertido
 
 </script>
 
